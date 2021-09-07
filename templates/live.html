@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<a href="/" class="btn btn-warning home">На главную</a>
+<a href="#" class="counter">{{g.count}}</a>
+<a href="/live" class="btn btn-info refresh">Создать новую жизнь</a>
+
+
+<br>
+<table id='cust_table' class="world">
+    <tbody>
+    {% for i in range(g.width) %}
+    <tr>
+        {% for j in range(g.height) %}
+        {% if g.world[i][j]==1 %}
+        <td class="cell living-cell"></td>
+        {% elif g.world[i][j]==0 and g.old_world[i][j]==1 and g.count != 1 %}
+        <td class="cell dead-cell"></td>
+        {% else %}
+        <td class="cell"></td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+    setInterval(() => window.location.reload(), 1000)
+</script>
+
+{% endblock %}

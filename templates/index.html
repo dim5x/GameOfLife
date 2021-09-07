@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<form class="btn btn-primary" method="post">
+    <div>
+        <input name="height" autofocus type="text" placeholder="Высота мира"
+               autocomplete="off"/>
+    </div>
+    <div>
+        <input name="width" type='text' placeholder="Ширина мира"/>
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Отправить данные">
+    </div>
+    <a class="btn btn-primary" href="{{ url_for ('live') }}">Создать мир</a>
+
+</form>
+
+{% endblock %}
+
